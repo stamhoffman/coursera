@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+#include <map>
+#include <string>
+#include <fstream>
+#include <set>
+
+
+std::string toLow(std::string &str){
+    std::transform(str.begin(),str.end(),str.begin(),tolower);
+ return str;
+ }
+
+
+int main(){
+
+int count = 0;
+ auto compare = [](std::string a,std::string b)-> bool{return toLow(a) < toLow(b);};
+
+std::cin >> count;
+if(count < 0 || count >1000) return 0;
+std::vector<std::string> numbers;
+std::string number;
+       
+while(count--){
+     std::cin >> number;
+     numbers.push_back(number);
+}
+std::sort(numbers.begin(),numbers.end(),compare);
+for(auto unit: numbers){
+std::cout << unit << " ";        
+}
+
+return 0;
+}
